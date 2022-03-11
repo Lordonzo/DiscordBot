@@ -1,9 +1,8 @@
 const Discord = require('discord.js')
 
 module.exports = {
-    run: (Client, message, args, tool) => {
-        const embed = new Discord.MessageEmbed()
-            .setColor(0)
+    run: (Client, messageCreate, args, tool) => {
+        const embed = new Discord.MessageEmbed().setColor(0)
     
         const commands = require('../storage/commands.json').commands
         var allCommands = ''
@@ -13,7 +12,7 @@ module.exports = {
     
         embed.addField('All commands :', allCommands, true)
     
-        message.channel.send({embed})
+        messageCreate.channel.send({embeds: [embed]})
     },
     "desc": "Returns all the commands"
 }

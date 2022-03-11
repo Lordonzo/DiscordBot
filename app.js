@@ -1,7 +1,7 @@
 /** Require Packages + Config */
-const Discord = require('discord.js'),
+const { Client, Intents } = require('discord.js'),
     config = require('./config.json'),
-    bot = new Discord.Client(),
+    bot = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]}),
     fs = require('fs')
 
 /** Connexion du bot */
@@ -13,7 +13,7 @@ bot.on('ready', () => {
 })
 
 /** Listener Event */
-bot.on('message', message => {
+bot.on('messageCreate', message => {
     if (message.author.bot || !message.content.startsWith(config.prefix)) return
 
     let args = message.content.slice(config.prefix.length).trim().split(' ')
