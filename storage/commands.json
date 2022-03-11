@@ -1,0 +1,13 @@
+{
+    "commands":
+    [
+        {
+            "name":"help",
+            "desc":"Returns all the commands"
+        },
+        {
+            "name":"ping",
+            "desc":"Returns Pong!"
+        }
+    ]
+}
