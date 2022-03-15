@@ -3,6 +3,9 @@ const { Client, Intents } = require('discord.js'),
     config = require('./config.json'),
     bot = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]}),
     fs = require('fs')
+    // https://www.katsurin.com/docs/anilist-node
+    anilist = require('anilist-node'),
+    Anilist = new anilist()
 
 /** Connexion du bot */
 bot.on('ready', () => {
@@ -29,6 +32,10 @@ bot.on('messageCreate', message => {
     }
 })
 
+/** Anilist Bot Test */
+Anilist.lists.anime("Lordonzo").then(data => {
+    console.log(data.filter(el => el.name == 'Completed ONA'))
+})
 
 
 bot.login(config.token)
